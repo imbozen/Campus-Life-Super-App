@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dining</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="dining.html">Dining</a>
+  <a href="events.html">Events</a>
+</nav>
+
+<h1>Dining Options</h1>
+
+<!-- CATEGORY BUTTONS -->
+<div>
+  <button onclick="showCategory('breakfast')">Breakfast</button>
+  <button onclick="showCategory('lunch')">Lunch</button>
+  <button onclick="showCategory('dinner')">Dinner</button>
+  <button onclick="showAll()">Show All</button>
+</div>
+
+<!-- FILTER BUTTONS -->
+<div>
+  <button onclick="filterDiet('vegan')">Vegan</button>
+  <button onclick="filterDiet('gluten')">Gluten-Free</button>
+</div>
+
+<!-- MEALS -->
+<div id="meal-container">
+
+  <div class="card" data-category="breakfast" data-diet="gluten">
+    Pancakes
+    <button onclick="vote(this)">👍</button>
+    <span class="votes">0</span>
+  </div>
+
+  <div class="card" data-category="lunch" data-diet="vegan">
+    Veggie Bowl
+    <button onclick="vote(this)">👍</button>
+    <span class="votes">0</span>
+  </div>
+
+  <div class="card" data-category="dinner">
+    Chicken Alfredo
+    <button onclick="vote(this)">👍</button>
+    <span class="votes">0</span>
+  </div>
+
+</div>
+
+<!-- SUGGEST MEAL -->
+<h3>Suggest a Meal</h3>
+<input type="text" id="mealInput" placeholder="Enter meal name">
+<button onclick="addMeal()">Submit</button>
+
+<!-- API SECTION -->
+<h3>Suggested Meals (API)</h3>
+<button onclick="loadMeals()">Load Meals</button>
+<div id="api-meals"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
