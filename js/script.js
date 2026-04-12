@@ -1,68 +1,65 @@
-// CATEGORY FILTER
-function showCategory(category) {
-  let cards = document.querySelectorAll(".card");
+let meals = JSON.parse(localStorage.getItem("meals")) || [
+  {name:"Pancakes", category:"breakfast", diet:"gluten", votes:0},
+  {name:"Veggie Bowl", category:"lunch", diet:"vegan", votes:0},
+  {name:"Chicken Alfredo", category:"dinner", diet:"", votes:0}
+];
 
-  cards.forEach(card => {
-    if (card.dataset.category === category) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  });
+function saveMeals() {
+  localStorage.setItem("meals", JSON.stringify(meals));
 }
 
-// SHOW ALL
-function showAll() {
-  document.querySelectorAll(".card").forEach(card => {
-    card.style.display = "block";
-  });
-}
-
-// DIET FILTER
-function filterDiet(type) {
-  let cards = document.querySelectorAll(".card");
-
-  cards.forEach(card => {
-    if (card.dataset.diet === type) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  });
-}
-
-// VOTING SYSTEM
-function vote(button) {
-  let voteSpan = button.nextElementSibling;
-  let count = parseInt(voteSpan.innerText);
-  count++;
-  voteSpan.innerText = count;
-}
-
-// ADD MEAL (USER INPUT)
-function addMeal() {
-  let input = document.getElementById("mealInput");
-  let value = input.value;
-
-  if (value === "") return;
-
+function displayMeals(filteredMeals = meals) {
   let container = document.getElementById("meal-container");
+  container.innerHTML = "";
 
-  let newCard = document.createElement("div");
-  newCard.classList.add("card");
+  filteredMeals.forEach((meal, index) => {
+    let col = document.createElement("div");
+    col.className = "col-md-4";
 
-  newCard.innerHTML = `
-    ${value}
-    <button onclick="vote(this)">👍</button>
-    <span class="votes">0</span>
-  `;
+    col.innerHTML = `
+      <div class="card p-3 mb-3">
+        <h5>${meal.name}</h5>
+        <p>${meal.category}</p>
+        <button class="btn btn-sm btn-success" onclick="vote(${index})">👍</button>
+        <span>${meal.votes}</span>
+      </div>
+    `;
 
-  container.appendChild(newCard);
-
-  input.value = "";
+    container.appendChild(col);
+  });
 }
 
-// API FETCH (TheMealDB)
+function vote(index) {
+  meals[index].votes++;
+  saveMeals();
+  displayMeals();
+}
+
+function addMeal() {
+  let input = document.getElementById("mealInput").value;
+
+  if (!input) return;
+
+  meals.push({name: input, category:"lunch", diet:"", votes:0});
+  saveMeals();
+  displayMeals();
+}
+
+function showCategory(category) {
+  let filtered = meals.filter(m => m.category === category);
+  displayMeals(filtered);
+}
+
+function filterDiet(type) {
+  let filtered = meals.filter(m => m.diet === type);
+  displayMeals(filtered);
+}
+
+function showAll() {
+  displayMeals();
+}
+
+// API
 function loadMeals() {
   fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=chicken")
     .then(res => res.json())
@@ -70,16 +67,20 @@ function loadMeals() {
       let container = document.getElementById("api-meals");
       container.innerHTML = "";
 
-      data.meals.forEach(meal => {
-        let div = document.createElement("div");
-        div.classList.add("card");
+      data.meals.slice(0,3).forEach(meal => {
+        let col = document.createElement("div");
+        col.className = "col-md-4";
 
-        div.innerHTML = `
-          <h4>${meal.strMeal}</h4>
-          <img src="${meal.strMealThumb}" width="100">
+        col.innerHTML = `
+          <div class="card p-2">
+            <h6>${meal.strMeal}</h6>
+            <img src="${meal.strMealThumb}" class="img-fluid">
+          </div>
         `;
 
-        container.appendChild(div);
+        container.appendChild(col);
       });
     });
 }
+
+displayMeals();
