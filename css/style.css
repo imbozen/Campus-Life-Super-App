@@ -18,3 +18,22 @@ h1 {
 button {
   margin: 5px;
 }
+
+.card:hover {
+  transform: scale(1.03);
+  transition: 0.2s;
+}
+
+.hero-image {
+  background-image: url("../images/campus.jpg");
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-text {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  border-radius: 10px;
+}

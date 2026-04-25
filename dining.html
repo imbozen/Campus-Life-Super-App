@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dining</title>
+  <title>Dining | Summit Valley University</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -10,17 +10,159 @@
 
 <body>
 
-<nav class="navbar navbar-dark bg-dark p-3">
-  <a class="text-white" href="index.html">Home</a>
-  <a class="text-white" href="dining.html">Dining</a>
-  <a class="text-white" href="events.html">Events</a>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand">Summit Valley University</a>
+    <div>
+      <a class="nav-link d-inline text-white" href="index.html">Home</a>
+      <a class="nav-link d-inline text-white" href="dining.html">Dining</a>
+      <a class="nav-link d-inline text-white" href="events.html">Events</a>
+    </div>
+  </div>
 </nav>
+<!-- HERO -->
+<div class="bg-success text-white text-center p-5">
+  <h1>Campus Dining</h1>
+  <p class="lead">A full week of meals, diverse options, and student favorites.</p>
+</div>
 
-<div class="container mt-4">
+<div class="container mt-5">
 
-<h1 class="text-center">Dining Options</h1>
+<!-- WEEKLY MENU -->
+<h2 class="text-center mb-4">📅 Weekly Dining Menu</h2>
 
-<!-- CATEGORY -->
+<div class="table-responsive">
+<table class="table table-bordered text-center">
+  <thead class="table-dark">
+    <tr>
+      <th>Day</th>
+      <th>Breakfast</th>
+      <th>Lunch</th>
+      <th>Dinner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Monday</td>
+      <td>Pancakes</td>
+      <td>Chicken Wrap</td>
+      <td>Pasta Alfredo</td>
+    </tr>
+    <tr>
+      <td>Tuesday</td>
+      <td>Omelette</td>
+      <td>Veggie Bowl (Vegan)</td>
+      <td>Steak & Potatoes</td>
+    </tr>
+    <tr>
+      <td>Wednesday</td>
+      <td>Bagels</td>
+      <td>Turkey Sandwich</td>
+      <td>Stir Fry (Gluten-Free)</td>
+    </tr>
+    <tr>
+      <td>Thursday</td>
+      <td>French Toast</td>
+      <td>Caesar Salad</td>
+      <td>Chicken Parmesan</td>
+    </tr>
+    <tr>
+      <td>Friday</td>
+      <td>Breakfast Burrito</td>
+      <td>Burgers</td>
+      <td>Pizza Night</td>
+    </tr>
+    <tr>
+      <td>Saturday</td>
+      <td>Waffles</td>
+      <td>Tacos</td>
+      <td>BBQ Chicken</td>
+    </tr>
+    <tr>
+      <td>Sunday</td>
+      <td>Eggs & Bacon</td>
+      <td>Soup & Sandwich</td>
+      <td>Roast Dinner</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- RESTAURANTS -->
+<h2 class="text-center mt-5 mb-4">🍴 On-Campus Dining</h2>
+
+<div class="row">
+
+  <!-- DINING HALLS -->
+  <div class="col-md-3">
+    <div class="card p-3 shadow-sm">
+      <h5>Summit Dining Hall</h5>
+      <p>Main all-you-can-eat dining</p>
+      <p>Hours: 7 AM – 9 PM</p>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card p-3 shadow-sm">
+      <h5>Valley Grill</h5>
+      <p>Grill & comfort food</p>
+      <p>Hours: 10 AM – 10 PM</p>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card p-3 shadow-sm">
+      <h5>Green Leaf Café</h5>
+      <p>Healthy & vegan options</p>
+      <p>Hours: 8 AM – 6 PM</p>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card p-3 shadow-sm">
+      <h5>Global Kitchen</h5>
+      <p>International cuisine</p>
+      <p>Hours: 11 AM – 9 PM</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FAST FOOD -->
+<h2 class="text-center mt-5 mb-4">🍟 Quick Eats (Fast Food)</h2>
+
+<div class="row">
+
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm">
+      <h5>Campus Burgers</h5>
+      <p>Burgers, fries, shakes</p>
+      <p>Hours: 11 AM – 1 AM</p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm">
+      <h5>Pizza Express</h5>
+      <p>Pizza & late-night slices</p>
+      <p>Hours: 12 PM – 2 AM</p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm">
+      <h5>Taco Spot</h5>
+      <p>Tacos & burritos</p>
+      <p>Hours: 10 AM – 12 AM</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- INTERACTIVE SECTION -->
+<h2 class="text-center mt-5">⭐ Student Favorites</h2>
+
 <div class="text-center mb-3">
   <button class="btn btn-primary" onclick="showCategory('breakfast')">Breakfast</button>
   <button class="btn btn-primary" onclick="showCategory('lunch')">Lunch</button>
@@ -28,30 +170,21 @@
   <button class="btn btn-secondary" onclick="showAll()">All</button>
 </div>
 
-<!-- FILTER -->
-<div class="text-center mb-4">
-  <button class="btn btn-success" onclick="filterDiet('vegan')">Vegan</button>
-  <button class="btn btn-warning" onclick="filterDiet('gluten')">Gluten-Free</button>
-</div>
-
-<!-- MEALS -->
 <div id="meal-container" class="row"></div>
 
-<!-- ADD MEAL -->
-<div class="mt-4 text-center">
+<!-- SUGGESTION -->
+<div class="mt-5 text-center">
   <h4>Suggest a Meal</h4>
   <input type="text" id="mealInput" class="form-control w-50 mx-auto mb-2">
   <button class="btn btn-dark" onclick="addMeal()">Submit</button>
 </div>
 
-<!-- API -->
-<div class="mt-5 text-center">
-  <h4>Meal Suggestions</h4>
-  <button class="btn btn-info" onclick="loadMeals()">Load Meals</button>
-  <div id="api-meals" class="row mt-3"></div>
 </div>
 
-</div>
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3 mt-5">
+  <p>© 2026 Summit Valley University Dining</p>
+</footer>
 
 <script src="js/script.js"></script>
 </body>
